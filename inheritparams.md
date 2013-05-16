@@ -32,17 +32,17 @@ function ChildClass(config) {
 
 ```
 
-In the above example, 'config.parentValue' would also be listed in the parameters for the child object.
+In the above example, `config.parentValue` would also be listed in the parameters for the child object.
 
-@inheritparams can propagate through several levels of implementation, 'GrandChildClass' would receive
-'config.parentValue' if it specifies '@augments ChildClass' and '@inheritparams config.'.
+`@inheritparams` can propagate through several levels of implementation, `GrandChildClass` would receive
+`config.parentValue` if it specifies `@augments ChildClass` and `@inheritparams config.`.
 
 Syntax
 ------
 
     @inheritparams [filter]
 
-inheritparams requires a single parameter: the filter. In the above example 'config.' (with dot) was used, to copy
+inheritparams requires a single parameter: the filter. In the above example `config.` (with dot) was used, to copy
 all properties of the config object. inheritparams will copy any parameter which contains the filter string.
 Wildcards or regexes are not currently supported. If you have a need for these, please open an issue or pull request on
 this github page.
