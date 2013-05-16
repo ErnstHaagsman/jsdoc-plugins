@@ -1,3 +1,8 @@
+/**
+ * Constructor parameter inheritance JSdoc plugin. Uses a decent amount of @augments code. Please see inheritparams.md for usage instructions.
+ * @author Ernst Haagsman <ernsthaagsman@gmail.com>
+ */
+
 exports.defineTags = function(dictionary){
     dictionary.defineTag('inheritparams', {
         mustHaveValue: true,
