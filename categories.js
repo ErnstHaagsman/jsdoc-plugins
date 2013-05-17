@@ -8,7 +8,6 @@ exports.defineTags = function(dictionary) {
         onTagged: function(doclet, tag) {
             if(env.conf.categoryList.indexOf(tag.value) !== -1)
             {
-                console.log(tag.value);
                 doclet.category = tag.value.split('/');
                 doclet.categoryNestingLevel = doclet.category.length - 1;
             }
