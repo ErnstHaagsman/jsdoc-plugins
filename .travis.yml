@@ -4,7 +4,7 @@ before_script:
   - cd ../
   - git clone https://github.com/jsdoc3/jsdoc.git jsdoc
   - mkdir jsdoc/addons
-  - mv -r jsdoc-plugins/* jsdoc/addons
+  - mv jsdoc-plugins/* jsdoc/addons/
   - cd jsdoc
   - sed "/var specFolders/ c\var specFolders = ['addons/test/specs'];" <test/runner.js >test/runner.js
 
