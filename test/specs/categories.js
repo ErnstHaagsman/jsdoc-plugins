@@ -18,6 +18,8 @@ describe("Categories tag", function() {
         var onTagged = dictionary.lookUp('category').onTagged;
         var Tag = {value: 'clearly/not/existing/category/for/testing/purposes'};
 
+        spyOn(console,'error');
         expect(onTagged.bind(null,null,Tag)).toThrow(exception);
+        expect(console.error).toHaveBeenCalledWith('ERROR  Undefined category "' + Tag.value + '"')
     });
 });
