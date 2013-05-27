@@ -26,6 +26,56 @@ exports.handlers = {
     }
 };
 
+exports.processCategories = function (categories)
+{
+    return processCats(JSON.parse(JSON.stringify(categories)));
+};
+
+function processCats (categories, level, parent)
+{
+    if(!level)
+    {
+        parent = "";
+        level = 1;
+    }
+
+    var processedCats = {};
+
+    for (var category in categories)
+    {
+        if(category.indexOf(parent) === 0 && category.split('/').length == level)
+        {
+            // Determine category name at this level
+            var catName;
+            if(level > 1)
+            {
+                var splitCat = category.split('/');
+                catName = splitCat[splitCat.length - 1];
+            }
+            else
+            {
+                catName = category;
+            }
+
+            // Copy data of the category
+            var categoryData = categories[category];
+
+            processedCats[catName] = {
+                displayName : categoryData.displayName,
+                description : categoryData.description
+            };
+
+            // Recurse into next level
+            delete categories[category]; // To speed up the process
+
+            var children = processCats(categories, level + 1, category);
+            if (Object.keys(children).length) processedCats[catName].children = children;
+        }
+    }
+
+    return processedCats;
+}
+
 function loadConfiguration () {
     try
     {
