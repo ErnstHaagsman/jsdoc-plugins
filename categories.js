@@ -43,7 +43,7 @@ function processCats (categories, level, parent)
 
     for (var category in categories)
     {
-        if(category.indexOf(parent) === 0 && category.split('/').length == level)
+        if(categories.hasOwnProperty(category) && category.indexOf(parent) === 0 && category.split('/').length == level)
         {
             // Determine category name at this level
             var catName;
@@ -60,10 +60,17 @@ function processCats (categories, level, parent)
             // Copy data of the category
             var categoryData = categories[category];
 
-            processedCats[catName] = {
-                displayName : categoryData.displayName,
-                description : categoryData.description
-            };
+            var newCategoryObject = {};
+
+            for(key in categoryData)
+            {
+                if(categoryData.hasOwnProperty(key))
+                {
+                    newCategoryObject[key] = categoryData[key];
+                }
+            }
+
+            processedCats[catName] = newCategoryObject;
 
             // Recurse into next level
             delete categories[category]; // To speed up the process
