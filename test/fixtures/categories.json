@@ -1,4 +1,8 @@
 {
+    "util" : {
+        "displayName" : "Utilities",
+        "description" : "Description"
+    },
     "util/helpers" : {
         "displayName" : "Helper Classes",
         "description" : ""
