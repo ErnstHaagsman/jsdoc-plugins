@@ -32,6 +32,30 @@ describe("Categories tag", function() {
         expect(actual).toEqual(expected);
     });
 
+    it('should also copy any fields into the nested object', function() {
+        var expected = {
+            util : {
+                displayName : 'Utilities',
+                description : 'Description',
+                url: 'http://any.com',
+                children : {
+                    helpers : {
+                        displayName : 'Helper Classes',
+                        description : ''
+                    }
+                }
+            }
+        };
+
+        var clonedCategories = JSON.parse(JSON.stringify(env.conf.categories));
+
+        clonedCategories['util'].url = 'http://any.com';
+
+        var actual = categoryAddon.processCategories(clonedCategories);
+
+        expect(actual).toEqual(expected);
+    });
+
     it('should throw an exception when a non-existing category is found', function() {
         var exception = 'Undefined category';
         var dictionary = require('jsdoc/tag/dictionary');
