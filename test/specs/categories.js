@@ -13,6 +13,10 @@ describe("Categories tag", function() {
         expect(model.categoryNestingLevel).toEqual(1);
     });
 
+    it("should correctly store the category string", function() {
+        expect(model.categoryString).toEqual('util/helpers');
+    });
+
     it('should be able to generate a nested category object', function() {
         var expected = {
             util : {
